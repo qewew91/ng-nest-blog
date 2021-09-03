@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"qewew91\",\r\n    \"name\": \"Dobrovolschi Silviu\"\r\n}",
+					"raw": "{\r\n    \"username\": \"qewew91\",\r\n    \"name\": \"Dobrovolschi Silviu\",\r\n    \"password\": \"1234\",\r\n    \"email\": \"a@gmail.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -33,7 +33,35 @@
 			"response": []
 		},
 		{
-			"name": "User Finding",
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"qewew91\",\r\n    \"name\": \"Dobrovolschi Silviu\",\r\n    \"password\": \"1234\",\r\n    \"email\": \"a@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All User FInding",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -51,19 +79,47 @@
 			"response": []
 		},
 		{
-			"name": "User Updating",
+			"name": "User Finding",
 			"request": {
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/user/1",
+					"raw": "localhost:3000/user/4",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"user",
-						"1"
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Updating",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"weweq\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/4",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"4"
 					]
 				}
 			},
