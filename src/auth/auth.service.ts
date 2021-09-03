@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { from, Observable } from 'rxjs'
-import { hash, compare } from 'bcrypt'
-import { User } from '../user/models/user.interface'
+import { compare, hash } from 'bcrypt'
+import { User } from '../types/user.interface'
 
 @Injectable()
 export class AuthService {

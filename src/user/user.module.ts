@@ -8,10 +8,11 @@ import { AuthModule } from '../auth/auth.module'
 @Module({
   imports: [
     TypeOrmModule.forFeature([UserEntity]),
-    AuthModule
+    AuthModule,
   ],
   controllers: [UserController],
   providers: [UserService],
+  exports: [UserService],
 })
 export class UserModule {
 }
