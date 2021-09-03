@@ -21,7 +21,6 @@ export class RolesGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest<IJwtStrategyValidation>()
-    console.log(request)
     const user = request.user.user
     return this.userService.findOne(user.id).pipe(
       map((user) => {
