@@ -63,8 +63,8 @@ export class UserController {
     return this.userService.updateOne(id, user)
   }
 
-  @HasRoles(UserRoles.ADMIN)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @HasRoles(UserRoles.ADMIN)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Put(':id/role')
   @HttpCode(HttpStatus.OK)
   updateUserRole(@Param('id') id: number, @Body() user: User): Observable<User> {
