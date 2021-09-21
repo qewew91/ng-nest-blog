@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { AuthenticationService } from '../../services/authentication.service'
 import { Router } from '@angular/router'
 import { map } from 'rxjs/operators'
+import { AuthenticationService } from '../../services/authentication.service'
+import { CustomValidators } from '../../validators/custom.validators'
 
 @Component({
   selector: 'app-register',
@@ -28,11 +29,11 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(18),
-        // CustomValidators.passwordContainsNumber
+        CustomValidators.passwordContainsNumber
       ]],
       passwordConfirm: [null, [Validators.required]],
     }, {
-      // validators: CustomValidators.passwordMatches
+      validators: CustomValidators.passwordsMatch
     })
   }
 

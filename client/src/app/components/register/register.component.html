@@ -18,16 +18,20 @@
 
     <mat-form-field>
       <input formControlName='password' matInput placeholder='Your Password' type='password'>
-      <mat-hint *ngIf='registerForm.controls.name.errors'>Password is required, it must be minimal 6 characters length,
+      <mat-hint *ngIf='registerForm.controls.password.errors'>Password is required, it must be minimal 6 characters length,
         and maximal 18
       </mat-hint>
     </mat-form-field>
 
     <mat-form-field>
       <input formControlName='passwordConfirm' matInput placeholder='Confirm Your Password' type='password'>
-      <mat-hint *ngIf='registerForm.controls.name.errors'>Password must be the same as the first password</mat-hint>
+      <mat-hint *ngIf='registerForm.controls.passwordConfirm.errors'>Password must be the same as the first password</mat-hint>
     </mat-form-field>
 
     <button [disabled]='registerForm.invalid' color='primary' mat-flat-button type='submit'>Register</button>
   </div>
 </form>
+
+<h3 *ngIf="registerForm.invalid">Form contains following errors</h3>
+<small *ngIf="registerForm.controls.password.hasError('passwordInvalid')">Password is not containing a number</small><br>
+<small *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords aren't matching</small>
