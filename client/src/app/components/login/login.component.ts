@@ -22,13 +22,13 @@ export class LoginComponent implements OnInit {
       email: new FormControl(null, [
         Validators.required,
         Validators.email,
-        Validators.minLength(6)
+        Validators.minLength(6),
       ]),
       password: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(18)
-      ])
+        Validators.maxLength(18),
+      ]),
     })
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       return
     }
     this.authService.login(this.loginForm?.value).pipe(
-      map(token => this.router.navigate(['admin']))
+      map(token => this.router.navigate(['admin'])),
     ).subscribe()
   }
 }

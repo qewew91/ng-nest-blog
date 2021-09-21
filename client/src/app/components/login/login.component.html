@@ -1,17 +1,19 @@
 <h1>
   Login Page
 </h1>
-<form [formGroup]='loginForm' (ngSubmit)='onSubmit()'>
+<form (ngSubmit)='onSubmit()' [formGroup]='loginForm'>
   <div class='container'>
     <mat-form-field>
-      <input matInput placeholder='Email' formControlName='email'>
+      <input formControlName='email' matInput placeholder='Email'>
       <mat-hint *ngIf='loginForm.controls.email.errors'>Email is required</mat-hint>
     </mat-form-field>
     <mat-form-field>
-      <input type='password' matInput placeholder='Password' formControlName='password'>
-      <mat-hint *ngIf='loginForm.controls.password.errors'>Password is required, it must be minimal 6 characters length, and maximal 18</mat-hint>
+      <input formControlName='password' matInput placeholder='Password' type='password'>
+      <mat-hint *ngIf='loginForm.controls.password.errors'>Password is required, it must be minimal 6 characters length,
+        and maximal 18
+      </mat-hint>
     </mat-form-field>
 
-    <button mat-flat-button color='primary' [disabled]='loginForm.invalid' type='submit'>Login</button>
+    <button [disabled]='loginForm.invalid' color='primary' mat-flat-button type='submit'>Login</button>
   </div>
 </form>

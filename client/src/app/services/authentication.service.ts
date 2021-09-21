@@ -26,7 +26,7 @@ export class AuthenticationService {
 
   register(user: User): Observable<User> {
     return this.http.post<User>('/api/user/', user).pipe(
-      map(user => user)
+      map(user => user),
     )
   }
 }

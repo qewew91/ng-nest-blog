@@ -1,31 +1,33 @@
 <h1>Register Page</h1>
-<form [formGroup]='registerForm' (ngSubmit)='onSubmit()'>
+<form (ngSubmit)='onSubmit()' [formGroup]='registerForm'>
   <div class='container'>
     <mat-form-field>
-      <input matInput placeholder='Full Name' formControlName='name'>
+      <input formControlName='name' matInput placeholder='Full Name'>
       <mat-hint *ngIf='registerForm.controls.name.errors'>Please write your name!</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder='Your Username' formControlName='username'>
+      <input formControlName='username' matInput placeholder='Your Username'>
       <mat-hint *ngIf='registerForm.controls.username.errors'>Username is required</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder='Your Email' formControlName='email'>
+      <input formControlName='email' matInput placeholder='Your Email'>
       <mat-hint *ngIf='registerForm.controls.email.errors'>Email is required</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder='Your Password' formControlName='password' type='password'>
-      <mat-hint *ngIf='registerForm.controls.name.errors'>Password is required, it must be minimal 6 characters length, and maximal 18</mat-hint>
+      <input formControlName='password' matInput placeholder='Your Password' type='password'>
+      <mat-hint *ngIf='registerForm.controls.name.errors'>Password is required, it must be minimal 6 characters length,
+        and maximal 18
+      </mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder='Confirm Your Password' formControlName='passwordConfirm' type='password'>
+      <input formControlName='passwordConfirm' matInput placeholder='Confirm Your Password' type='password'>
       <mat-hint *ngIf='registerForm.controls.name.errors'>Password must be the same as the first password</mat-hint>
     </mat-form-field>
 
-    <button mat-flat-button type='submit' [disabled]='registerForm.invalid' color='primary'>Register</button>
+    <button [disabled]='registerForm.invalid' color='primary' mat-flat-button type='submit'>Register</button>
   </div>
 </form>

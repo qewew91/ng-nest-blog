@@ -1,4 +1,16 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query, UseGuards } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Post,
+  Put,
+  Query,
+  UseGuards,
+} from '@nestjs/common'
 import { catchError, map, Observable, of } from 'rxjs'
 import { UserService } from './user.service'
 import { User } from '../types/user.interface'
@@ -19,17 +31,18 @@ export class UserController {
   create(@Body() user: User): Observable<User | Object> {
     return this.userService.create(user).pipe(
       map((user: User) => user),
-      catchError(err => of({ error: err.message })),
+      catchError((err) => of({ error: err.message })),
     )
   }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
   login(@Body() user: User): Observable<LoginResponse> {
-    return this.userService.login(user).pipe(
-      map((jwt: string) => ({ access_token: jwt })),
-    )
+    return this.userService
+      .login(user)
+      .pipe(map((jwt: string) => ({ access_token: jwt })))
   }
+
   @HasRoles(UserRoles.ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get(':id')
@@ -42,12 +55,15 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   @HttpCode(HttpStatus.OK)
-  index(@Query('page') page = 1, @Query('limit') limit = 10): Observable<Pagination<User>> {
-    limit = limit > 100 ? 100: limit
+  index(
+    @Query('page') page = 1,
+    @Query('limit') limit = 10,
+  ): Observable<Pagination<User>> {
+    limit = limit > 100 ? 100 : limit
     return this.userService.paginate({
       page,
       limit,
-      route: 'http://localhost:3000/user'
+      route: 'http://localhost:3000/user',
     })
   }
 
@@ -63,11 +79,14 @@ export class UserController {
     return this.userService.updateOne(id, user)
   }
 
-  // @HasRoles(UserRoles.ADMIN)
-  // @UseGuards(JwtAuthGuard, RolesGuard)
+  @HasRoles(UserRoles.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Put(':id/role')
   @HttpCode(HttpStatus.OK)
-  updateUserRole(@Param('id') id: number, @Body() user: User): Observable<User> {
+  updateUserRole(
+    @Param('id') id: number,
+    @Body() user: User,
+  ): Observable<User> {
     return this.userService.updateUserRole(id, user)
   }
 }

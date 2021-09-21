@@ -48,7 +48,7 @@ export class UserService {
         usersPageable.items.forEach(user => delete user.password)
 
         return usersPageable
-      })
+      }),
     )
   }
 
